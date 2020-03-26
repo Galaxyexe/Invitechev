@@ -2,7 +2,8 @@
   <div id="app">
     <DragnDrop v-bind:units="units">
     </DragnDrop>
-    <router-link class="button" to="/blueprint">Hello
+    <router-link action: class="button" to="about">
+      <span @click="present()">Hello</span>
     </router-link>
     
   </div>
@@ -24,7 +25,7 @@ export default {
   },
   methods: {
     present: function() {
-    console.log('Hello from blueprint');   // The function returns the product of p1 and p2
+    console.log('Test Action');   // The function returns the product of p1 and p2
 }
   }
 

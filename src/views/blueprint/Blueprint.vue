@@ -9,6 +9,7 @@ export default {
     name: "Blueprint",
     data: function() {
     return{
+      First: this.console.log('hello')
     }
     }
 }
