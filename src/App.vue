@@ -19,7 +19,7 @@ export default {
   data: function () {
     return {
       units:[
-      {id:1, type:"Rectangle"}
+      {id:1, type:"Rectangle", x:-180.906, y: -4.10156, rotation:0},
       ]
     }
   },

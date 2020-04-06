@@ -1,112 +1,150 @@
 <template>
-<div id="outerContainer">
+  <div id="outerContainer">
     <div id="container">
-      <div v-for ="unit in units" :key="unit.id">
-      <Unit :type="unit.type"></Unit>
+      <div class="overlay">
+        <div class="objects" v-if="showObjects==true">
+          <div class="overlayObject" v-on:click="addUnit($event, 'Square')" />
+          <div class="overlayObject overlayCircle" v-on:click="addUnit($event, 'Circle')" />
+        </div>
+        <h2 v-on:click="showObjects=!showObjects">Add</h2>
+        <h2 id="trash">Trash</h2>
+        <h2>Save</h2>
       </div>
+      <div v-for="unit in units" :key="unit.id">
+        <Unit
+          :id="String(unit.id)"
+          class="fixed"
+          :type="unit.type"
+          :x="unit.x"
+          :y="unit.y"
+          :rotation="unit.rotation"
+          :onDelete="deleteUnit"
+        ></Unit>
       </div>
+    </div>
   </div>
 </template>
 
 <script>
-import Unit from './Unit.vue'
+import Unit from "./Unit.vue";
 
 export default {
-  name: 'DragnDrop',
+  name: "DragnDrop",
   props: {
-    units: Array,
+    units: Array
   },
   components: {
     Unit
   },
-  mounted(){
-    var dragItem = document.getElementById("item");
-    var container = document.getElementById("container");
-    console.log(container)
-    var active = false;
-    var currentX;
-    var currentY;
-    var initialX;
-    var initialY;
-    var xOffset = 0;
-    var yOffset = 0;
+  data: function() {
+    let showObjects = false;
+    return {
+      showObjects
+    };
+  },
+  methods: {
+    addUnit(event, type) {
+      let units = this.units;
+      units = this.setUnitPositions(units);
 
-    container.addEventListener("touchstart", dragStart, false);
-    container.addEventListener("touchend", dragEnd, false);
-    container.addEventListener("touchmove", drag, false);
-
-    container.addEventListener("mousedown", dragStart, false);
-    container.addEventListener("mouseup", dragEnd, false);
-    container.addEventListener("mousemove", drag, false);
-
-    function dragStart(e) {
-      if (e.type === "touchstart") {
-        initialX = e.touches[0].clientX - xOffset;
-        initialY = e.touches[0].clientY - yOffset;
-      } else {
-        initialX = e.clientX - xOffset;
-        initialY = e.clientY - yOffset;
-      }
-
-      if (e.target === dragItem) {
-        active = true;
-      }
-    }
-
-    function dragEnd() {
-      initialX = currentX;
-      initialY = currentY;
-
-      active = false;
-    }
-
-    function drag(e) {
-      if (active) {
-      
-        e.preventDefault();
-      
-        if (e.type === "touchmove") {
-          currentX = e.touches[0].clientX - initialX;
-          currentY = e.touches[0].clientY - initialY;
-        } else {
-          currentX = e.clientX - initialX;
-          currentY = e.clientY - initialY;
+      units.push({
+        id: units[0] ? units[units.length - 1].id + 1 : 1,
+        type: type,
+        x: event.x - (screen.width * 1.06) / 2,
+        y: -135,
+        rotation: 0
+      });
+      this.$emit("units", units);
+    },
+    deleteUnit(id) {
+      console.log(id);
+      let units = this.units;
+      for (let i = 0; i < units.length; i++) {
+        if (units[i].id == id) {
+          this.$emit("units", units.splice(i, 1));
+          break;
         }
-
-        xOffset = currentX;
-        yOffset = currentY;
-
-        setTranslate(currentX, currentY, dragItem);
       }
+      //~removeIndex && units.splice(removeIndex, 1);
+    },
+    setUnitPositions(units) {
+      units.forEach(function(unit) {
+        let newData = document.getElementById("item" + String(unit.id));
+        unit.x = newData.getAttribute("data-x")
+          ? Number(newData.getAttribute("data-x"))
+          : unit.x;
+        unit.y = newData.getAttribute("data-y")
+          ? Number(newData.getAttribute("data-y"))
+          : unit.y;
+        unit.rotation = newData.getAttribute("data-angle")
+          ? Number(newData.getAttribute("data-angle"))
+          : unit.rotation;
+      });
+      return units;
     }
-
-    function setTranslate(xPos, yPos, el) {
-      el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
-    }
-  },
-  data(){
-    return{
-    myArray:["e", "j"]
-
-    }
-  },
-  methods:{
   }
-}
- 
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
- #container {
-      width: 100%;
-      height: 400px;
-      background-color: #333;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border-radius: 7px;
-      touch-action: none;
-    }
+#container {
+  width: 100%;
+  height: 75vh;
+  background-color: #eee; /*#333;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 7px;
+  touch-action: none;
+  position: relative;
+  /*overflow: scroll;*/
+}
+.overlay {
+  position: absolute;
+  left: 75%;
+  top: 0%;
+  width: 25%;
+  height: 10%;
+  background-color: rgba(255, 255, 255, 0.6); /*rgba(240, 240, 240, 0.6);*/
+  z-index: 20000;
+  display: table;
+  align-items: center;
+}
+button {
+  margin: 0 auto;
+}
+.fixed {
+  position: absolute;
+}
+h2 {
+  border-left: 1px solid darkgray;
+  border-right: 1px solid darkgray;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+.objects {
+  position: absolute;
+  left: -30%;
+  top: 0;
+  width: 29.7%;
+  margin-right: 50px;
+  background-color: rgba(255, 255, 255, 0.6);
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.overlayObject {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(136, 136, 136, 0.5);
+  vertical-align: middle;
+  margin-left: auto;
+  margin-right: auto;
+}
+.overlayCircle {
+  border-radius: 100%;
+}
 </style>
