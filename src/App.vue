@@ -5,28 +5,24 @@
     <router-link action: class="button" to="about">
       <span @click="present()">Hello</span>
     </router-link>
-    
+  
   </div>
 </template>
 
 <script>
+// const axios = require("axios");
 import DragnDrop from './components/DragnDrop.vue'
 export default {
   name: 'App',
   components: {
     DragnDrop,
   },
-  data: function () {
+  data() {
     return {
       units:[
       {id:1, type:"Rectangle"}
       ]
     }
-  },
-  methods: {
-    present: function() {
-    console.log('Test Action');   // The function returns the product of p1 and p2
-}
   }
 
 }
