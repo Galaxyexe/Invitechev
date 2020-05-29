@@ -1,0 +1,80 @@
+#container {
+  width: 100%;
+  height: 75vh;
+  background-color: #eee;
+  /*#333;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 7px;
+  touch-action: none;
+  position: relative;
+  /*overflow: scroll;*/
+}
+
+.overlay {
+  position: absolute;
+  left: 75%;
+  top: 0%;
+  width: 25%;
+  height: 10%;
+  background-color: rgba(255, 255, 255, 0.6);
+  /*rgba(240, 240, 240, 0.6);*/
+  z-index: 20000;
+  display: table;
+  align-items: center;
+}
+
+#container{
+  background-color:#269;
+  background-image: linear-gradient(white 2px, transparent 2px),
+    linear-gradient(90deg, white 2px, transparent 2px),
+    linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
+  background-size:100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px
+}
+button {
+  margin: 0 auto;
+}
+
+.fixed {
+  position: absolute;
+}
+
+h2 {
+  border-left: 1px solid darkgray;
+  border-right: 1px solid darkgray;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.objects {
+  position: absolute;
+  left: -30%;
+  top: 0;
+  width: 29.7%;
+  margin-right: 50px;
+  background-color: rgba(255, 255, 255, 0.6);
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.overlayObject {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(136, 136, 136, 0.5);
+  vertical-align: middle;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.overlayCircle {
+  border-radius: 100%;
+}
+
+
+// display: grid | inline-grid;

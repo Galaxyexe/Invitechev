@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <DragnDrop v-bind:units="units">
-    </DragnDrop>
+    <router-view :units="units" />
     <router-link action: class="button" to="about">
       <span @click="present()">Hello</span>
+      <button @click="window.open({url})"></button>
     </router-link>
   
   </div>
@@ -11,18 +11,17 @@
 
 <script>
 // const axios = require("axios");
-import DragnDrop from './components/DragnDrop.vue'
 export default {
   name: 'App',
-  components: {
-    DragnDrop,
-  },
   data() {
     return {
+      url: 'localhost:8080/blueprint',
       units:[
-      {id:1, type:"Rectangle"}
+      {id:1, type:"Rectangle", x:-180.906, y: -4.10156},
       ]
     }
+  },
+  mounted: function(){
   }
 
 }

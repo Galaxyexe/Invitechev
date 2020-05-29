@@ -1,0 +1,8 @@
+<div class="item" :id="'item' + String(id)" v-on:click="handleClick()" @mousedown="handleUp()"
+  v-bind:class="{ unitCircle: type=='Circle'}">
+
+  <!-- bottom-right resize handle -->
+
+  <div class="resize resize-bottom resize-right" v-if="clicked==true"></div>
+
+</div>
