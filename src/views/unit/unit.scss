@@ -1,13 +1,15 @@
 .item {
   width: 100px;
   height: 100px;
-  transform: translate(-180.906px, -4.10156px);
+  /*transform: translate(-180.906px, -4.10156px);*/
+  transform: translate(0px, 0px);
 
   /*background-color:rgb(245,230,99)*/
-  border: 1px solid rgba(136, 136, 136, 0.5);
+  border: 1px solid green; /*rgba(136, 136, 136, 0.5);*/
   touch-action: none;
   user-select: none;
   display: flex;
+  box-sizing: border-box;
 
   &:active {
     background-color: rgba(168, 218, 220, 1);
@@ -20,51 +22,4 @@
 
 .unitCircle {
   border-radius: 100%;
-}
-
-.resize {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  border-radius: 100%;
-
-  /*background-color: lightblue;*/
-  background-color: lightcoral;
-}
-
-.resize-left {
-  left: 0;
-  right: 0;
-}
-
-.resize-top {
-  top: 0;
-}
-
-.resize-right {
-  left: 0;
-  right: 0;
-  margin-left: auto;
-}
-
-.resize-bottom {
-  top: 0;
-  bottom: 0;
-  margin-top: auto;
-}
-
-.rotation-handle {
-  display: flex;
-}
-
-.rotation-object {
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  top: 0;
-  bottom: 0;
-
-  /*margin-right: auto;*/
-  margin-top: auto;
-  margin-bottom: auto;
 }

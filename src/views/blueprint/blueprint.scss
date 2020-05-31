@@ -1,11 +1,7 @@
 #container {
   width: 100%;
-  height: 75vh;
-  background-color: #eee;
+  height: 100vh;
   /*#333;*/
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
   border-radius: 7px;
   touch-action: none;
@@ -26,14 +22,14 @@
   align-items: center;
 }
 
-#container{
-  background-color:#269;
+#container {
+  background-color: #269;
   background-image: linear-gradient(white 2px, transparent 2px),
     linear-gradient(90deg, white 2px, transparent 2px),
-    linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
-  background-size:100px 100px, 100px 100px, 20px 20px, 20px 20px;
-  background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px
+    linear-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  background-position: -0px -0px, -0px -0px, -0px -0px, -0px -0px;
 }
 button {
   margin: 0 auto;
@@ -75,6 +71,5 @@ h2 {
 .overlayCircle {
   border-radius: 100%;
 }
-
 
 // display: grid | inline-grid;
