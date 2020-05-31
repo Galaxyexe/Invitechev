@@ -17,7 +17,7 @@ export default {
     return {
       url: 'localhost:8080/blueprint',
       units:[
-      {id:1, type:"Rectangle", x:-180.906, y: -4.10156},
+      {id:1, type:"Rectangle", x:0, y: 0},
       ]
     }
   },
