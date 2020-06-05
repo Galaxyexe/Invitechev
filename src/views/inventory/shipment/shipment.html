@@ -1,0 +1,23 @@
+<form v-on:submit.prevent>
+  <h1>Edit Form</h1>
+  <div
+    v-bind:style="{ display: 'flex',   'vertical-align': 'middle'
+}"
+    v-for="itemGroup in items"
+  >
+    <h4>{{itemGroup[0].originalName}}</h4>
+    <div v-for="item in itemGroup">
+      <FormObject
+        v-bind:field="item"
+        v-on:updateField="disabled=determineDisabled()"
+      />
+    </div>
+  </div>
+  <button :onClick="addItem">+</button>
+  <!-- ADD PLUS BUTTON-->
+  <!-- ADD SHIPMENT TIME (REPEATED?)-->
+  <div v-bind:style="{ display: 'flex'}">
+    <button v-bind:disabled="disabled">Submit</button>
+    <button></button>
+  </div>
+</form>

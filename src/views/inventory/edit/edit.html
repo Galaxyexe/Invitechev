@@ -1,0 +1,24 @@
+<form>
+  <h1>Edit Form</h1>
+  <div
+    v-bind:style="{ display: 'flex',   'vertical-align': 'middle'
+}"
+    v-for="itemGroup in editedItems"
+  >
+    <h4>{{itemGroup[0].originalName}}</h4>
+    <div v-for="item in itemGroup">
+      <FormObject
+        v-bind:field="item"
+        v-on:updateField="disabled=determineDisabled()"
+      />
+    </div>
+  </div>
+  <div v-bind:style="{ display: 'flex'}">
+    <button v-bind:disabled="disabled">Submit</button>
+    <button>
+      <router-link :to="{ name: 'items' }">
+        Go Back
+      </router-link>
+    </button>
+  </div>
+</form>

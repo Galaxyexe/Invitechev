@@ -1,0 +1,5 @@
+<div>
+  <OverlayBar v-bind:items="overlayItems" v-bind:position="'bottom'" />
+  <Items v-if="screen=='items'" v-bind:items="items" />
+  <Shipment v-if="screen=='shipment'" />
+</div>

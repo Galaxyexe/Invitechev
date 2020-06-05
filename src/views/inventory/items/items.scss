@@ -1,0 +1,41 @@
+button {
+  width: auto;
+  height: 8vh;
+  font-size: 3vh;
+  border: 0px;
+  background-color: rgb(49, 150, 252);
+  border-radius: 10px;
+  margin: 1%;
+  white-space: nowrap;
+  text-align: center;
+  color: #252525;
+  cursor: pointer;
+} /* TODO put in every page */
+button:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+  background-color: #eeeeee;
+}
+
+th {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.danger {
+  background-color: red;
+}
+.key {
+  border: 1px solid black;
+}
+
+.keyObject {
+  cursor: pointer;
+}

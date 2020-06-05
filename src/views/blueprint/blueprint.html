@@ -1,20 +1,34 @@
 <div id="outerContainer">
   <div id="container">
-    <div class="overlay">
-      <div class="grid"/>
+    <OverlayBar
+      v-bind:items="overlayItems"
+      v-bind:position="'right'"
+      v-bind:autoWidth="true"
+    />
+
+    <!--<div class="overlay">
+      <div class="grid" />
       <div class="objects" v-if="showObjects==true">
         <div class="overlayObject" v-on:click="addUnit($event, 'Square')" />
-        <div class="overlayObject overlayCircle" v-on:click="addUnit($event, 'Circle')" />
-
+        <div
+          class="overlayObject overlayCircle"
+          v-on:click="addUnit($event, 'Circle')"
+        />
       </div>
       <h2 v-on:click="showObjects=!showObjects">Add</h2>
       <h2 id="trash">Trash</h2>
       <h2>Save</h2>
-    </div>
+    </div>-->
     <div v-for="unit in units" :key="unit.id">
-      <Unit :id="String(unit.id)" class="fixed" :type="unit.type" :x="unit.x" :y="unit.y" :rotation="unit.rotation"
-        :onDelete="deleteUnit"></Unit>
+      <Unit
+        :id="String(unit.id)"
+        class="fixed"
+        :type="unit.type"
+        :x="unit.x"
+        :y="unit.y"
+        :rotation="unit.rotation"
+        :onDelete="deleteUnit"
+      ></Unit>
     </div>
   </div>
-
 </div>

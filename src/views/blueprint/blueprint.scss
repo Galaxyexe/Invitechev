@@ -13,18 +13,17 @@
   /*overflow: scroll;*/
 }
 
-.overlay {
+/*.overlay {
   position: absolute;
   left: 75%;
   top: 0%;
   width: 25%;
   height: 10%;
   background-color: rgba(255, 255, 255, 0.6);
-  /*rgba(240, 240, 240, 0.6);*/
   z-index: 20000;
   display: table;
   align-items: center;
-}
+}*/
 
 #container{
   background-color:#269;
@@ -63,14 +62,14 @@ h2 {
   align-items: center;
 }
 
-.overlayObject {
+/*.overlayObject {
   width: 20px;
   height: 20px;
   border: 1px solid rgba(136, 136, 136, 0.5);
   vertical-align: middle;
   margin-left: auto;
   margin-right: auto;
-}
+}*/
 
 .overlayCircle {
   border-radius: 100%;

@@ -2,8 +2,6 @@
   <div id="app">
     <router-view :units="units" />
     <router-link action: class="button" to="about">
-      <span @click="present()">Hello</span>
-      <button @click="window.open({url})"></button>
     </router-link>
   
   </div>
@@ -35,6 +33,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /*margin-top: 60px;*/
 }
 </style>

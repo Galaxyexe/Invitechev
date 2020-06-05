@@ -1,0 +1,37 @@
+<div>
+  <SearchBar v-bind:onChange="paginateItems" />
+  <div v-bind:style="{ display: 'inline-flex' }" v-if="!disableEdit()">
+    <button>
+      <router-link
+        :to="{ name: 'editInventory', params: { editedItems: getSelected(), totalItems: items, immediate:true } }"
+      >
+        Edit Amount
+      </router-link>
+    </button>
+    <button>Edit Info</button>
+    <button class="danger">Delete</button>
+  </div>
+  <table>
+    <tr class="key">
+      <th v-for="option in options">
+        <div
+          v-if="option!=='edit'"
+          @click="sortItems(option)"
+          class="keyObject"
+        >
+          {{option.charAt(0).toUpperCase() + option.slice(1)}}
+        </div>
+        <div v-if="option==='edit'">
+          {{option.charAt(0).toUpperCase() + option.slice(1)}}
+        </div>
+      </th>
+    </tr>
+    <tr v-for="item in sortedItems">
+      <th v-for="option in options">
+        <div v-if="option!=='edit'">{{item[option]}}</div>
+        <input type="checkbox" v-if="option==='edit'" v-model="item.checked" />
+      </th>
+    </tr>
+  </table>
+</div>
+<!-- TODO editing for quantities attributes delete-->
